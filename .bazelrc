@@ -1,3 +1,6 @@
 # Clang 15.0.0
-build:clang15 --cxxopt=-std=c++20
-build:clang15 --define compiler=clang15
+build:clang15 --cxxopt='-std=c++20'
+build:clang15 --host_cxxopt='-std=c++20'
+build:clang15 --define compiler=clang-15
+build:clang15 --repo_env=CC=clang-15
+build:clang15 --copt="-Wno-error=unused-but-set-variable"
