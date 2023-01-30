@@ -3,4 +3,21 @@ build:clang15 --cxxopt='-std=c++20'
 build:clang15 --host_cxxopt='-std=c++20'
 build:clang15 --define compiler=clang-15
 build:clang15 --repo_env=CC=clang-15
+build:clang15 --noincompatible_remove_legacy_whole_archive
+build:clang15 --enable_platform_specific_config
+build:clang15 --define=with_xla_support=true
+build:clang15 --experimental_cc_shared_library
+build:clang15 --experimental_link_static_libraries_once=false
+build:clang15 --copt="-Wno-all"
+build:clang15 --copt="-Wno-extra"
+build:clang15 --copt="-Wno-deprecated"
+build:clang15 --copt="-Wno-deprecated-declarations"
+build:clang15 --copt="-Wno-ignored-attributes"
+build:clang15 --copt="-Wno-array-bounds"
+build:clang15 --copt="-Wunused-result"
+build:clang15 --copt="-Werror=unused-result"
+build:clang15 --copt="-Wswitch"
+build:clang15 --copt="-Werror=switch"
 build:clang15 --copt="-Wno-error=unused-but-set-variable"
+build:clang15 --define=no_aws_support=true
+build:clang15 --define=no_hdfs_support=true

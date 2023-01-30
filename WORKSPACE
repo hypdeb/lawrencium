@@ -7,7 +7,7 @@ http_archive(
     urls = ["https://github.com/google/googletest/archive/b72202078d0a7a2f2509eb5237685bcf1baea3b4.zip"],
 )
 
-load("//tensorflow:repo.bzl", "tensorflow_http_archive")
+load("//tensorflow_wrapper:repo.bzl", "tensorflow_http_archive")
 
 tensorflow_http_archive(
     name = "org_tensorflow",
