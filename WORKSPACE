@@ -2,9 +2,9 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "com_google_googletest",
-    sha256 = "ab4709e34b538e65c4575319965d3f1d2189ddd56ebb89e9a184ef3f4621ea64",
-    strip_prefix = "googletest-b72202078d0a7a2f2509eb5237685bcf1baea3b4",
-    urls = ["https://github.com/google/googletest/archive/b72202078d0a7a2f2509eb5237685bcf1baea3b4.zip"],
+    sha256 = "5ac2cd780ff0bad9778c35cb2409b4af0b879a34e612ea67cefe4b2edd5dea6c",
+    strip_prefix = "googletest-01e18376efe643a82cff468734f87f8c60e314b6",
+    urls = ["https://github.com/google/googletest/archive/01e18376efe643a82cff468734f87f8c60e314b6.zip"],
 )
 
 load("//tensorflow_wrapper:repo.bzl", "tensorflow_http_archive")
