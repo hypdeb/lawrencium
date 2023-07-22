@@ -6,7 +6,7 @@ cc_test(
         "test_ping_tensorflow.cc",
     ],
     linkstatic = 1,
-    linkopts=["-lrt", "-force_load"],
+    linkopts=["-lrt"],
     deps = [
         "@com_google_googletest//:gtest_main",
         "@org_tensorflow//tensorflow/cc:scope",
