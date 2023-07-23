@@ -1,5 +1,5 @@
 # Lawrencium Learning Ground
-Repository used to track some experiments with build systems, Tensorflow and C++.
+Repository used to track some experiments with build systems, C++ and CUDA.
 ## Development Environment (Windows)
 * Install WSL with the `Ubuntu 20.04` distribution.
   * Why this version ? At the time of writing this, LLVM does not support CUDA 12, we have to install CUDA 11.something, which cannot be installed in `Ubuntu 22.04`.
