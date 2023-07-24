@@ -1,7 +1,7 @@
 # Clang 16.0.0 / default
-build --python_path="/usr/bin"
+build:clang --crosstool_top=//toolchain:clang_suite
+build:clang --cpu=amd64
+build:clang --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+build:clang --@rules_cuda//cuda:copts='-allow-unsupported-compiler'
 
-build --cxxopt='-std=c++20'
-build --host_cxxopt='-std=c++20'
-build --define compiler=clang-16
-build --repo_env=CC=clang-16
+build:cuda --@rules_cuda//cuda:copts='-allow-unsupported-compiler'

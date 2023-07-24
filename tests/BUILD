@@ -5,6 +5,7 @@ cc_test(
         "test_ping.cc",
     ],
     deps = [
+        "//src/cuda:ping",
         "@com_google_googletest//:gtest_main",
     ],
 )

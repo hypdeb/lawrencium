@@ -1,0 +1,3 @@
+namespace cuda {
+void launch();
+}

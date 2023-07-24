@@ -16,6 +16,11 @@ pip install numpy
 ```
 * You also need to install CUDNN by following this guide : https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html
   * Another hermeticity breach...
+* Update gcc:
+```
+sudo apt update && sudo apt upgrade
+sudo apt install gcc
+```
 * Build and / or run the tests to verify that everything is set up correctly:
 ```
 bazel build //tests:lawrencium_tests
