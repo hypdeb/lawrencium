@@ -2,7 +2,7 @@ cc_test(
     name = "lawrencium_tests",
     size = "small",
     srcs = [
-        "test_ping.cc",
+        "test_cuda.cc",
     ],
     deps = [
         "//src/cuda:ping",

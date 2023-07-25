@@ -65,6 +65,7 @@ def _impl(ctx):
                             flags = [
                                 "-stdlib=libstdc++",
                                 "-lstdc++",
+                                "-lm",
                             ],
                         ),
                     ]),

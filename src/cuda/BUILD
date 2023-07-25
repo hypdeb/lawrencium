@@ -17,7 +17,14 @@ cc_binary(
 
 cuda_library(
     name = "ping",
-    srcs = ["ping.cu"],
-    hdrs = ["ping.h"],
+    srcs = [
+        "add.cu",
+        "ping.cu",
+    ],
+    hdrs = [
+        "add.h",
+        "helpers.h",
+        "ping.h",
+    ],
     visibility = ["//visibility:public"],
 )
