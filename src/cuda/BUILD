@@ -18,11 +18,13 @@ cc_binary(
 cuda_library(
     name = "ping",
     srcs = [
-        "add.cu",
+        "basic_cuda.cu",
+        "basic_kernels.cu",
         "ping.cu",
     ],
     hdrs = [
-        "add.h",
+        "basic_cuda.cuh",
+        "basic_kernels.cuh",
         "helpers.h",
         "ping.h",
     ],

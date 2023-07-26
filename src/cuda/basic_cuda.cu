@@ -1,12 +1,6 @@
-#include "add.h"
 #include "helpers.h"
-
-__global__ void add_kernel(float *A, float *B, float *C, int N)
-{
-  int i = blockDim.x * blockIdx.x + threadIdx.x;
-  if (i < N)
-    C[i] = A[i] + B[i];
-}
+#include "basic_cuda.cuh"
+#include "basic_kernels.cuh"
 
 void lawrencium::cuda::cuda_add(float *A, float *B, float *C, int N) {
   const auto size = N * sizeof(float);
@@ -21,7 +15,7 @@ void lawrencium::cuda::cuda_add(float *A, float *B, float *C, int N) {
   CUDA_CHECK(cudaMemcpy(d_B, B, size, cudaMemcpyHostToDevice));
   int threadsPerBlock = 256;
   int blocksPerGrid = (N + threadsPerBlock - 1) / threadsPerBlock;
-  add_kernel<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
+  lawrencium::cuda::add_kernel<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
 
   CUDA_CHECK(cudaMemcpy(C, d_C, size, cudaMemcpyDeviceToHost));
 
@@ -31,4 +25,4 @@ void lawrencium::cuda::cuda_add(float *A, float *B, float *C, int N) {
 
   CUDA_CHECK(cudaGetLastError());
   CUDA_CHECK(cudaDeviceSynchronize());
-}
+};

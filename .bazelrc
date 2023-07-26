@@ -5,3 +5,5 @@ build:clang --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
 build:clang --@rules_cuda//cuda:copts='-allow-unsupported-compiler'
 
 build:cuda --@rules_cuda//cuda:copts='-allow-unsupported-compiler'
+build:cuda --cxxopt='-std=c++17'
+build:cuda --host_cxxopt='-std=c++17'

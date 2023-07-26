@@ -1,4 +1,4 @@
-#include "src/cuda/add.h"
+#include "src/cuda/basic_cuda.cuh"
 #include "src/cuda/ping.h"
 #include <gtest/gtest.h>
 
