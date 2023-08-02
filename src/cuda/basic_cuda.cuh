@@ -4,6 +4,8 @@
 namespace lawrencium {
 namespace cuda {
 void cuda_add(float *A, float *B, float *C, int N);
+
+bool is_doubly_stochastic(const float *A, const int N);
 } // namespace cuda
 } // namespace lawrencium
 

@@ -63,8 +63,8 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
-                                "-stdlib=libstdc++",
-                                "-lstdc++",
+                                "-stdlib=libc++",
+                                "-lc++",
                                 "-lm",
                             ],
                         ),
@@ -81,7 +81,7 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
-                                "-stdlib=libstdc++",
+                                "-stdlib=libc++",
                                 "-std=c++20",
                             ],
                         ),

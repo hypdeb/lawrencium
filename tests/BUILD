@@ -5,6 +5,7 @@ cc_test(
         "test_cuda.cc",
     ],
     deps = [
+        "//src/cpp:lawrencium_lib",
         "//src/cuda:ping",
         "@com_google_googletest//:gtest_main",
     ],
