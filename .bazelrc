@@ -3,6 +3,7 @@ build:clang --crosstool_top=//toolchain:clang_suite
 build:clang --cpu=amd64
 build:clang --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
 build:clang --@rules_cuda//cuda:compiler='clang'
+build:clang --@rules_cuda//cuda:archs=compute_61:compute_61,sm_61
 
 build:cuda --@rules_cuda//cuda:copts='-allow-unsupported-compiler'
 build:cuda --cxxopt='-std=c++20'
