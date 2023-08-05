@@ -25,5 +25,5 @@ TEST(CudaAddTest, CudaAddTest) {
 TEST(CudaDoubleStochasticityTest, CudaDoubleStochasticityTest) {
   const int sideLength = 1000;
   const int numElements = sideLength * sideLength;
-  const auto matrix = lawrencium::cpp::DiagonalMatrix<float>(numElements);
+  const auto matrix = lawrencium::cpp::DiagonalMatrix<float>(sideLength, 0.02);
 }

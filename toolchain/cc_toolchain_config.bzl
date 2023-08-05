@@ -25,7 +25,7 @@ def _impl(ctx):
         ),
         tool_path(
             name = "ld",
-            path = "/usr/bin/ld",
+            path = "/usr/local/llvm/bin/lld",
         ),
         tool_path(
             name = "ar",
@@ -33,7 +33,7 @@ def _impl(ctx):
         ),
         tool_path(
             name = "cpp",
-            path = "/bin/false",
+            path = "/usr/local/llvm/bin/clang++",
         ),
         tool_path(
             name = "gcov",
@@ -63,9 +63,15 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
+                                "-std=c++23",
                                 "-stdlib=libc++",
+                                "-fuse-ld=lld",
                                 "-lc++",
+                                "-lc++abi",
+                                "-static",
                                 "-lm",
+                                "-no-canonical-prefixes",
+                                "-L/usr/local/llvm/lib",
                             ],
                         ),
                     ]),
@@ -81,8 +87,9 @@ def _impl(ctx):
                     flag_groups = ([
                         flag_group(
                             flags = [
+                                "-std=c++23",
                                 "-stdlib=libc++",
-                                "-std=c++20",
+                                "-no-canonical-prefixes",
                             ],
                         ),
                     ]),
@@ -97,6 +104,8 @@ def _impl(ctx):
         cxx_builtin_include_directories = [
             "/usr/local/llvm/include",
             "/usr/include",
+            "/usr/local/llvm/lib/clang/17/include",
+            "/usr/local/llvm/include/c++/v1",
         ],
         toolchain_identifier = "local",
         host_system_name = "local",

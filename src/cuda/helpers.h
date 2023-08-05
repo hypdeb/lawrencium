@@ -1,6 +1,9 @@
 #ifndef _LAWRENCIUM_SRC_CUDA_HELPERS_H_
 #define _LAWRENCIUM_SRC_CUDA_HELPERS_H_
 
+#include <stdio.h>
+#include <stdlib.h>
+
 #define CUDA_CHECK(expr)                                                       \
   do {                                                                         \
     cudaError_t err = (expr);                                                  \
