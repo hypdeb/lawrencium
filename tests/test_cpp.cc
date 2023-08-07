@@ -9,8 +9,12 @@ TEST(TestNothing, TestNothing) {
 }
 
 TEST(TestDiagonalMatrix, TestDiagonalMatrix) {
-  const int sideLength = 1000;
-  const int numElements = sideLength * sideLength;
-  const auto vec = std::vector<float>(numElements);
+  const int sideLength = 5000;
   const auto matrix = lawrencium::cpp::DiagonalMatrix<float>(sideLength, 0.02);
+}
+
+TEST(TestDiagonalMatrixRawLoop, TestDiagonalMatrixRawLoop) {
+  const int sideLength = 5000;
+  const auto matrix
+      = lawrencium::cpp::DiagonalMatrixRawLoop<float>(sideLength, 0.02);
 }

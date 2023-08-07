@@ -8,6 +8,13 @@ http_archive(
 )
 
 http_archive(
+    name = "com_google_benchmark",
+    sha256 = "0094b77c01e9973876f1831f76cbae43fdaf09b424e467dc4171abaa6884e455",
+    strip_prefix = "benchmark-1.8.2",
+    urls = ["https://github.com/google/benchmark/archive/refs/tags/v1.8.2.zip"],
+)
+
+http_archive(
     name = "com_google_absl",
     strip_prefix = "abseil-cpp-8f241e778c08cfb4213877b5022442a8d1921b58",
     urls = ["https://github.com/abseil/abseil-cpp/archive/8f241e778c08cfb4213877b5022442a8d1921b58.zip"],

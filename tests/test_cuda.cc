@@ -24,6 +24,8 @@ TEST(CudaAddTest, CudaAddTest) {
 
 TEST(CudaDoubleStochasticityTest, CudaDoubleStochasticityTest) {
   const int sideLength = 1000;
-  const int numElements = sideLength * sideLength;
   const auto matrix = lawrencium::cpp::DiagonalMatrix<float>(sideLength, 0.02);
+  const auto isDoublyStochastic
+      = lawrencium::cuda::is_doubly_stochastic(matrix.data(), sideLength);
+  EXPECT_FALSE(isDoublyStochastic);
 }

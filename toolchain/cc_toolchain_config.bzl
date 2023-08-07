@@ -90,6 +90,7 @@ def _impl(ctx):
                                 "-std=c++23",
                                 "-stdlib=libc++",
                                 "-no-canonical-prefixes",
+                                "-O3",
                             ],
                         ),
                     ]),
