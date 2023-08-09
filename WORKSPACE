@@ -22,9 +22,9 @@ http_archive(
 
 http_archive(
     name = "rules_cuda",
-    sha256 = "9039c00f5cfe0ac5ff1110d20706bc41d6dbd52c737f303e9a4cea0994ec19a9",
-    strip_prefix = "rules_cuda-0503ead4724517db445796cbcdfc8400ce88c853",
-    urls = ["https://github.com/bazel-contrib/rules_cuda/archive/0503ead4724517db445796cbcdfc8400ce88c853.tar.gz"],
+    sha256 = "fa1462c4c3104de44489800a1da055f55afa57795789539c835e069818786f71",
+    strip_prefix = "rules_cuda-cab1fa2dd0e1f8489f566c91a5025856cf5ae572",
+    urls = ["https://github.com/bazel-contrib/rules_cuda/archive/cab1fa2dd0e1f8489f566c91a5025856cf5ae572.tar.gz"],
 )
 
 load("@rules_cuda//cuda:repositories.bzl", "register_detected_cuda_toolchains", "rules_cuda_dependencies")
