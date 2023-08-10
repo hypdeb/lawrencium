@@ -56,6 +56,10 @@ export CC=/usr/local/gcc-13.2.0/bin/gcc-13.2
 export CXX=/usr/local/gcc-13.2.0/bin/g++-13.2
 export FC=/usr/local/gcc-13.2.0/bin/gfortran-13.2
 ```
+
+### Installing CUDA
+Follow the [instructions](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local).
+
 ### Installing LLVM
 * `sudo apt update && sudo apt install zlib1g-dev`
 * `git clone https://github.com/llvm/llvm-project.git`
