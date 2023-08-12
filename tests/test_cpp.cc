@@ -1,4 +1,5 @@
 #include "src/cpp/common.h"
+#include "src/cpp/matrixes.h"
 #include <gtest/gtest.h>
 #include <vector>
 
@@ -10,7 +11,8 @@ TEST(TestNothing, TestNothing) {
 
 TEST(TestDiagonalMatrix, TestDiagonalMatrix) {
   const int sideLength = 5000;
-  const auto matrix = lawrencium::cpp::DiagonalMatrix<float>(sideLength, 0.02);
+  const auto matrix
+      = lawrencium::cpp::matrixes::DiagonalMatrix<float>(sideLength, 0.02);
 }
 
 TEST(TestDiagonalMatrixRawLoop, TestDiagonalMatrixRawLoop) {

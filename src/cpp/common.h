@@ -10,27 +10,6 @@ namespace lawrencium {
 namespace cpp {
 
 template <typename T>
-std::vector<T> DiagonalMatrix(const int sideLength, const T diagonalValue)
-  requires std::default_initializable<T>
-{
-  auto countToSideLength = std::views::iota(0, sideLength);
-  auto rowIndexes = countToSideLength
-                    | std::views::transform([sideLength](const auto i) {
-                        return std::views::repeat(i, sideLength);
-                      })
-                    | std::views::join;
-  auto columnIndexes
-      = std::views::repeat(countToSideLength, sideLength) | std::views::join;
-  auto zippedIndexes = std::views::zip(rowIndexes, columnIndexes);
-  return zippedIndexes
-         | std::views::transform([diagonalValue](const auto &tuple) {
-             return (std::get<0>(tuple) == std::get<1>(tuple)) ? diagonalValue
-                                                               : T();
-           })
-         | std::ranges::to<std::vector<T>>();
-}
-
-template <typename T>
 std::vector<T> DiagonalMatrixRawLoop(const int sideLength,
                                      const T diagonalValue)
   requires std::default_initializable<T>
