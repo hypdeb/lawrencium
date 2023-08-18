@@ -14,13 +14,15 @@ std::vector<T> DiagonalMatrixRawLoop(const int sideLength,
                                      const T diagonalValue)
   requires std::default_initializable<T>
 {
-  const auto numElements = diagonalValue * diagonalValue;
+  const auto numElements = sideLength * sideLength;
   auto result = std::vector<T>(numElements, T());
   for (auto i = 0; i < sideLength; ++i) {
-    result[i * sideLength + i] = diagonalValue;
+    for (auto j = 0; j < sideLength; ++j) {
+      result[i * sideLength + j] = i == j ? diagonalValue : T();
+    }
   }
   return result;
-}
+};
 
 } // namespace cpp
 } // namespace lawrencium

@@ -59,12 +59,15 @@ export FC=/usr/local/gcc-13.2.0/bin/gfortran-13.2
 
 ### Installing CUDA
 Follow the [instructions](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local).
+* Set `CUDA_PATH` to your CUDA installation path, e.g. `/usr/local/cuda-12.1`
+* Set `CUDA_CLANG_PATH` to your clang installation path, e.g. `/usr/local/llvm/bin/clang` 
 
 ### Installing LLVM
 * `sudo apt update && sudo apt install zlib1g-dev`
 * `git clone https://github.com/llvm/llvm-project.git`
 * `cd llvm-project`
 * Check out a version that is compatible with CUDA, e.g. `15.0.7`: `git checkout 8dfdcc7`
+* `mkdir build`
 * `cmake -S llvm -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;cross-project-tests;libclc;lld;lldb;openmp;polly;pstl' -DCMAKE_INSTALL_PREFIX=/usr/local/llvm`
 * `ninja -j 8 -C /llvm-install/llvm-project/build install`
 * Then we still need to build libc++:
@@ -74,5 +77,3 @@ Follow the [instructions](https://developer.nvidia.com/cuda-12-1-0-download-arch
   * `ninja -C build cxx cxxabi unwind`
   * `ninja -C build check-cxx check-cxxabi check-unwind`
   * `ninja -C build install-cxx install-cxxabi install-unwind`
-* Set `CUDA_PATH` to your CUDA installation path, e.g. `/usr/local/cuda-12.2`
-* Set `CUDA_CLANG_PATH` to your clang installation path, e.g. `/usr/local/llvm/bin/clang` 

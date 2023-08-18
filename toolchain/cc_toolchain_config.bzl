@@ -104,7 +104,7 @@ def _impl(ctx):
         cxx_builtin_include_directories = [
             "/usr/local/llvm/include",
             "/usr/include",
-            "/usr/local/llvm/lib/clang/17/include",
+            "/usr/local/llvm/lib/clang/18/include",
             "/usr/local/llvm/include/c++/v1",
         ],
         toolchain_identifier = "local",

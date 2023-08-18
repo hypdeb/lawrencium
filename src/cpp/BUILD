@@ -2,7 +2,6 @@ load("@rules_cc//cc:defs.bzl", "cc_library")
 
 cc_library(
     name = "lawrencium_lib",
-    srcs = ["matrixes.cpp"],
     hdrs = [
         "common.h",
         "matrixes.h",
