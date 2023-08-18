@@ -1,9 +1,5 @@
-**There's something off with using Clang to compile CUDA code. I'll try something else...**
-
-# Lawrencium Learning Ground
-Repository used to track some experiments with build systems, C++ and CUDA.
-## Development Environment Set Up From Clean Ubuntu 22.04 Installation
-Below are the numerous steps necessary to have a working development environment.
+# Learning Sandbox
+## Setting Up Environment
 ### Installing the stuff we need to install CMake from source
 * `sudo apt update && sudo apt upgrade`
 * `sudo apt install build-essential`
@@ -30,13 +26,15 @@ Below are the numerous steps necessary to have a working development environment
 * `sudo apt-get update`
 * `sudo apt-get install swig libedit-dev libncurses5-dev libncursesw5-dev liblzma-dev python3.8 libxml2-dev`
 * Follow [those instructions](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local) to install CUDA.
+* Set `CUDA_PATH` to your CUDA installation path, e.g. `/usr/local/cuda-12.2`
+
 ### Installing GCC from source, to be able to build LLVM
 If this works, thanks to [this guy](https://iamsorush.com/posts/build-gcc11/): 
 * Create some folder as a workspace, say /gcc-install
 * Move to that folder
-* Run `wget https://github.com/gcc-mirror/gcc/archive/refs/tags/releases/gcc-13.2.0.tar.gz`
-* Extract the thing: `tar -xvf gcc-13.2.0.tar.gz`
-* Navigate to the folder: `cd gcc-releases-gcc-13.2.0`
+* Run `wget https://github.com/gcc-mirror/gcc/archive/refs/tags/releases/gcc-12.2.0.tar.gz`
+* Extract the thing: `tar -xvf gcc-12.2.0.tar.gz`
+* Navigate to the folder: `cd gcc-releases-gcc-12.2.0`
 * Run the provided script which downloads and installs prerequisites: `contrib/download_prerequisites`
 * Some guy says some other dependencies might be missing. Run this just to be sure:
   * `sudo apt update && sudo apt install bzip2 flex`
@@ -45,26 +43,23 @@ If this works, thanks to [this guy](https://iamsorush.com/posts/build-gcc11/):
 /gcc-install
 mkdir build
 ```
-* Run whatever this is: `../gcc-releases-gcc-13.2.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/usr/local/gcc-13.2.0 --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-13.2`
+* Run whatever this is: `../gcc-releases-gcc-12.2.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/usr/local/gcc-13.2.0 --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-12.2`
 * Build it: `make -j 16`
 * Install it: `sudo make install-strip`
 * Do some more magic:
 ```
-export PATH=/usr/local/gcc-13.2.0/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/gcc-13.2.0/lib64:$LD_LIBRARY_PATH
-
-# To let CMake know
-export CC=/usr/local/gcc-13.2.0/bin/gcc-13.2
-export CXX=/usr/local/gcc-13.2.0/bin/g++-13.2
-export FC=/usr/local/gcc-13.2.0/bin/gfortran-13.2
+export PATH=/usr/local/gcc-12.2.0/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/gcc-12.2.0/lib64:$LD_LIBRARY_PATH
+```
+* Let CMake know
+```
+export CC=/usr/local/gcc-12.2.0/bin/gcc-12.2
+export CXX=/usr/local/gcc-12.2.0/bin/g++-12.2
+export FC=/usr/local/gcc-12.2.0/bin/gfortran-12.2
 ```
 
-### Installing CUDA
-Follow the [instructions](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local).
-* Set `CUDA_PATH` to your CUDA installation path, e.g. `/usr/local/cuda-12.1`
-* Set `CUDA_CLANG_PATH` to your clang installation path, e.g. `/usr/local/llvm/bin/clang` 
-
 ### Installing LLVM
+For clang-format and clang-tidy.
 * `sudo apt update && sudo apt install zlib1g-dev`
 * `git clone https://github.com/llvm/llvm-project.git`
 * `cd llvm-project`

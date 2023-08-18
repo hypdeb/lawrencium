@@ -1,0 +1,5 @@
+# GCC / default
+build:gcc --crosstool_top=//toolchain:gcc_suite
+build:gcc --cpu=amd64
+build:gcc --host_crosstool_top=@bazel_tools//tools/cpp:toolchain
+build:gcc --@rules_cuda//cuda:copts='--offload-arch=native'
