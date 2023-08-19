@@ -25,7 +25,7 @@
 * `sudo add-apt-repository ppa:deadsnakes/ppa`
 * `sudo apt-get update`
 * `sudo apt-get install swig libedit-dev libncurses5-dev libncursesw5-dev liblzma-dev python3.8 libxml2-dev`
-* Follow [those instructions](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local) to install CUDA.
+* Follow [those instructions](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=WSL-Ubuntu&target_version=2.0&target_type=deb_local) to install CUDA.
 * Set `CUDA_PATH` to your CUDA installation path, e.g. `/usr/local/cuda-12.2`
 
 ### Installing GCC from source, to be able to build LLVM
@@ -40,10 +40,10 @@ If this works, thanks to [this guy](https://iamsorush.com/posts/build-gcc11/):
   * `sudo apt update && sudo apt install bzip2 flex`
 * Create a build directory outside this:
 ```
-/gcc-install
+cd ~/gcc-install
 mkdir build
 ```
-* Run whatever this is: `../gcc-releases-gcc-12.2.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/usr/local/gcc-13.2.0 --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-12.2`
+* Run whatever this is: `../gcc-releases-gcc-12.2.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/usr/local/gcc-12.2.0 --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-12.2`
 * Build it: `make -j 16`
 * Install it: `sudo make install-strip`
 * Do some more magic:
@@ -67,3 +67,7 @@ For clang-format and clang-tidy.
 * `mkdir build`
 * `cmake -S llvm -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;cross-project-tests;libclc;lld;lldb;openmp;polly;pstl' -DCMAKE_INSTALL_PREFIX=/usr/local/llvm`
 * `ninja -j 8 -C /llvm-install/llvm-project/build install`
+
+## Install buildifier
+Formatting and other help for working with Bazel:
+* [Install Go](https://go.dev/doc/install)
