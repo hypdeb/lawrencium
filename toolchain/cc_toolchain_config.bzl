@@ -21,19 +21,23 @@ def _impl(ctx):
     tool_paths = [
         tool_path(
             name = "gcc",
-            path = "/bin/false",
+            path = "/usr/local/gcc-12.2.0/bin/gcc-12.2",
         ),
         tool_path(
             name = "ld",
-            path = "/bin/false",
+            path = "/usr/bin/ld",
+        ),
+        tool_path(
+            name = "as",
+            path = "/usr/bin/as",
         ),
         tool_path(
             name = "ar",
-            path = "/bin/false",
+            path = "/usr/bin/ar",
         ),
         tool_path(
             name = "cpp",
-            path = "/bin/false",
+            path = "/usr/local/gcc-12.2.0/bin/gcc-12.2",
         ),
         tool_path(
             name = "gcov",
@@ -64,6 +68,9 @@ def _impl(ctx):
                         flag_group(
                             flags = [
                                 "-std=c++20",
+                                "-L/usr/local/gcc-12.2.0/lib64",
+                                "-lm",
+                                "-lstdc++",
                             ],
                         ),
                     ]),
@@ -93,6 +100,9 @@ def _impl(ctx):
         features = features,
         cxx_builtin_include_directories = [
             "/usr/include",
+            "/usr/local/gcc-12.2.0/include/c++/12.2.0",
+            "/usr/local/gcc-12.2.0/lib/gcc/x86_64-linux-gnu/12.2.0/include",
+            "/usr/local/gcc-12.2.0/lib/gcc/x86_64-linux-gnu/12.2.0/include-fixed",
         ],
         toolchain_identifier = "local",
         host_system_name = "local",

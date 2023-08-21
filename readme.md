@@ -57,7 +57,7 @@ export CC=/usr/local/gcc-12.2.0/bin/gcc-12.2
 export CXX=/usr/local/gcc-12.2.0/bin/g++-12.2
 export FC=/usr/local/gcc-12.2.0/bin/gfortran-12.2
 ```
-
+At this point, the build might still fail because the compiler fails to locate the assembler (which is installed as `/usr/bin/as`). If this is the case, create a symbolic link from gcc's bin folder to `/usr/bin/as`.
 ### Installing LLVM
 For clang-format and clang-tidy.
 * `sudo apt update && sudo apt install zlib1g-dev`
