@@ -3,9 +3,10 @@
 
 #include <math.h>
 #include <cmath>
+#include <cuda_runtime.h>
 
 __global__ void kernel() {
-  std::sin(0.); // nvcc - ok
+  sin(0.); // nvcc - ok
 }
 
 void lawrencium::cuda::launch() {

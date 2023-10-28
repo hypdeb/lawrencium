@@ -9,47 +9,38 @@
 
 namespace leetcode = lawrencium::leetcode;
 
-std::vector<int>
-leetcode::MergeSortedArraysNaive(const std::vector<int> &nums1,
-                                 const std::vector<int> &nums2) {
-  const auto result_size = nums1.size() + nums2.size();
-  auto result = std::vector<int>(result_size);
-
-  auto iter1 = nums1.cbegin();
-  auto iter2 = nums2.cbegin();
-  auto resultIter = result.begin();
-  const auto end1 = nums1.cend();
-  const auto end2 = nums2.cend();
-
-  // While we have not reached the end of either of the inputs.
-  while (iter1 != end1 && iter2 != end2) {
-    if (*iter1 <= *iter2) {
-      *resultIter = *iter1;
-      std::advance(iter1, 1);
+void leetcode::MergeSortedArraysNaive(std::vector<int> *nums1,
+                                      const int m,
+                                      const std::vector<int> &nums2,
+                                      const int n) {
+  // Shift the elements in nums1 s.t. we get the space to potentially copy the
+  // entirety of nums2 at the start of nums1.
+  for (auto i = m - 1; i >= 0; i--) {
+    nums1->at(i + n) = nums1->at(i);
+  }
+  int nums1_index = n;
+  int nums2_index = 0;
+  int target_index = 0;
+  while (true) {
+    if (nums2_index == n)
+      break;
+    if (nums1_index == n + m) {
+      nums1->at(target_index) = nums2[nums2_index];
+      nums2_index += 1;
     } else {
-      *resultIter = *iter2;
-      std::advance(iter2, 1);
+      const auto e_1 = nums1->at(nums1_index);
+      const auto e_2 = nums2.at(nums2_index);
+      if (e_1 <= e_2) {
+        nums1->at(target_index) = e_1;
+        nums1_index += 1;
+      } else {
+        nums1->at(target_index) = e_2;
+        nums2_index += 1;
+      }
     }
-    std::advance(resultIter, 1);
-  }
 
-  // If we have reached the end of nums1 first, fill the rest of the results
-  // with the remaining elements of nums2.
-  if (iter1 == nums1.cend()) {
-    while (iter2 != nums2.cend()) {
-      *resultIter = *iter2;
-      std::advance(iter2, 1);
-      std::advance(resultIter, 1);
-    }
-  } else {
-    while (iter1 != nums1.cend()) {
-      *resultIter = *iter1;
-      std::advance(iter1, 1);
-      std::advance(resultIter, 1);
-    }
+    target_index += 1;
   }
-
-  return result;
 }
 
 int leetcode::CountBinarySubstrings(const std::string &str) {
@@ -72,13 +63,19 @@ int leetcode::CountBinarySubstrings(const std::string &str) {
   auto leftScan = std::vector<State>(inputSize);
   auto initialLeftState = State{.character = str[0], .count = 1};
   leftScan[0] = initialLeftState;
-  std::inclusive_scan(++str.cbegin(), str.cend(), ++leftScan.begin(),
-                      updateState, initialLeftState);
+  std::inclusive_scan(++str.cbegin(),
+                      str.cend(),
+                      ++leftScan.begin(),
+                      updateState,
+                      initialLeftState);
   auto rightScan = std::vector<State>(inputSize);
   auto initialRightState = State{.character = str[inputSize - 1], .count = 1};
   rightScan[inputSize - 1] = initialRightState;
-  std::inclusive_scan(++str.crbegin(), str.crend(), ++rightScan.rbegin(),
-                      updateState, initialRightState);
+  std::inclusive_scan(++str.crbegin(),
+                      str.crend(),
+                      ++rightScan.rbegin(),
+                      updateState,
+                      initialRightState);
   int count = 0;
   for (auto i = 0; i < inputSize - 1; i++) {
     const auto &leftScanValue = leftScan[i];

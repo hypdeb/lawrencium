@@ -8,42 +8,42 @@ using namespace testing;
 namespace leetcode = lawrencium::leetcode;
 
 TEST(TestMergeSortedArrays, BothParametersEmpty) {
-  const auto nums1 = std::vector<int>();
+  auto nums1 = std::vector<int>();
   const auto nums2 = std::vector<int>();
-  const auto result = leetcode::MergeSortedArraysNaive(nums1, nums2);
-  EXPECT_EQ(result.size(), 0);
+  leetcode::MergeSortedArraysNaive(&nums1, 0, nums2, 0);
+  EXPECT_EQ(nums1.size(), 0);
 }
 
 TEST(TestMergeSortedArrays, FirstParameterEmpty) {
-  const auto nums1 = std::vector<int>();
+  auto nums1 = std::vector<int>(3);
   const auto nums2 = std::vector<int>{1, 2, 3};
-  const auto result = leetcode::MergeSortedArraysNaive(nums1, nums2);
-  EXPECT_EQ(result.size(), 3);
-  ASSERT_THAT(result, ElementsAre(1, 2, 3));
+  leetcode::MergeSortedArraysNaive(&nums1, 0, nums2, 3);
+  EXPECT_EQ(nums1.size(), 3);
+  ASSERT_THAT(nums1, ElementsAre(1, 2, 3));
 }
 
 TEST(TestMergeSortedArrays, SecondParameterEmpty) {
-  const auto nums1 = std::vector<int>{1, 2, 3};
+  auto nums1 = std::vector<int>{1, 2, 3};
   const auto nums2 = std::vector<int>();
-  const auto result = leetcode::MergeSortedArraysNaive(nums1, nums2);
-  EXPECT_EQ(result.size(), 3);
-  ASSERT_THAT(result, ElementsAre(1, 2, 3));
-}
-
-TEST(TestMergeSortedArrays, SecondParameterShorter) {
-  const auto nums1 = std::vector<int>{1, 3, 5};
-  const auto nums2 = std::vector<int>{2, 4};
-  const auto result = leetcode::MergeSortedArraysNaive(nums1, nums2);
-  EXPECT_EQ(result.size(), 5);
-  ASSERT_THAT(result, ElementsAre(1, 2, 3, 4, 5));
+  leetcode::MergeSortedArraysNaive(&nums1, 3, nums2, 0);
+  EXPECT_EQ(nums1.size(), 3);
+  ASSERT_THAT(nums1, ElementsAre(1, 2, 3));
 }
 
 TEST(TestMergeSortedArrays, FirstParameterShorter) {
-  const auto nums1 = std::vector<int>{1, 3};
+  auto nums1 = std::vector<int>{1, 3, 0, 0, 0};
   const auto nums2 = std::vector<int>{2, 4, 5};
-  const auto result = leetcode::MergeSortedArraysNaive(nums1, nums2);
-  EXPECT_EQ(result.size(), 5);
-  ASSERT_THAT(result, ElementsAre(1, 2, 3, 4, 5));
+  leetcode::MergeSortedArraysNaive(&nums1, 2, nums2, 3);
+  EXPECT_EQ(nums1.size(), 5);
+  ASSERT_THAT(nums1, ElementsAre(1, 2, 3, 4, 5));
+}
+
+TEST(TestMergeSortedArrays, SecondParameterShorter) {
+  auto nums1 = std::vector<int>{1, 3, 5, 0, 0};
+  const auto nums2 = std::vector<int>{2, 4};
+  leetcode::MergeSortedArraysNaive(&nums1, 3, nums2, 2);
+  EXPECT_EQ(nums1.size(), 5);
+  ASSERT_THAT(nums1, ElementsAre(1, 2, 3, 4, 5));
 }
 
 TEST(ReverseLinkedList, OneNode) {

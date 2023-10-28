@@ -11,3 +11,14 @@ cuda_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cuda_library(
+    name = "cuda_neural_nets",
+    srcs = [
+        "layers.cu.cc",
+    ],
+    hdrs = [
+        "layers.h",
+    ],
+    visibility = ["//visibility:public"],
+)

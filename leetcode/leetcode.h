@@ -12,12 +12,16 @@ namespace leetcode {
 /**
  * Merges the two sorted parameter vectors into one sorted returned vector.
  *
- * @param nums1 The first sorted vector of length n.
- * @param nums2 The second sorted vector of length m.
- * @return A new sorted vector of length n + m.
+ * @param nums1 The first sorted vector of length m.
+ * @param m The length of the elements to sort in num1.
+ * @param nums2 The second sorted vector of length n.
+ * @param n The length of nums2.
+ * @return Nothing, elements are sorted in nums1.
  */
-std::vector<int> MergeSortedArraysNaive(const std::vector<int> &nums1,
-                                        const std::vector<int> &nums2);
+void MergeSortedArraysNaive(std::vector<int> *nums1,
+                            const int m,
+                            const std::vector<int> &nums2,
+                            const int n);
 
 /**
  * Reverses a linked list.

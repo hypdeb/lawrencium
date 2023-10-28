@@ -1,4 +1,5 @@
 #include "cuda/ping.h"
+#include <cuda_runtime.h>
 #include <gtest/gtest.h>
 
 TEST(TestSanity, KernelCanBeCalled) {

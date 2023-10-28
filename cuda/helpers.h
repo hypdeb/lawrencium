@@ -1,5 +1,5 @@
-#ifndef _LAWRENCIUM_SRC_CUDA_HELPERS_H_
-#define _LAWRENCIUM_SRC_CUDA_HELPERS_H_
+#ifndef _LAWRENCIUM_CUDA_HELPERS_H_
+#define _LAWRENCIUM_CUDA_HELPERS_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,4 +13,4 @@
     }                                                                          \
   } while (0)
 
-#endif // _LAWRENCIUM_SRC_CUDA_HELPERS_H_
+#endif // _LAWRENCIUM_CUDA_HELPERS_H_
