@@ -1,24 +1,12 @@
 load("@rules_cuda//cuda:defs.bzl", "cuda_library")
 
 cuda_library(
-    name = "ping",
+    name = "layers",
     srcs = [
-        "ping.cu",
+        "convolution.cu",
     ],
     hdrs = [
-        "helpers.h",
-        "ping.h",
-    ],
-    visibility = ["//visibility:public"],
-)
-
-cuda_library(
-    name = "cuda_neural_nets",
-    srcs = [
-        "layers.cu.cc",
-    ],
-    hdrs = [
-        "layers.h",
+        "convolution.h",
     ],
     visibility = ["//visibility:public"],
 )

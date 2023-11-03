@@ -1,7 +1,21 @@
 #ifndef _LAWRENCIUM_BOOKCAMP_PASCALS_TRIANGLEW_H_
 #define _LAWRENCIUM_BOOKCAMP_PASCALS_TRIANGLE_H_
 
+#include <algorithm>
+#include <iostream>
+#include <iterator>
 #include <vector>
+
+template <typename T>
+std::ostream &operator<<(std::ostream &s,
+                         const std::vector<std::vector<T>> &triangle) {
+  for (const auto &row : triangle) {
+    std::ranges::copy(row, std::ostream_iterator<T>(s, " "));
+    s << '\n';
+  }
+
+  return s;
+}
 
 namespace lawrencium {
 namespace bookcamp {

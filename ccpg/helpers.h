@@ -1,5 +1,5 @@
-#ifndef _LAWRENCIUM_CUDA_HELPERS_H_
-#define _LAWRENCIUM_CUDA_HELPERS_H_
+#ifndef _LAWRENCIUM_CCPG_HELPERS_H_
+#define _LAWRENCIUM_CCPG_HELPERS_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,9 +8,11 @@
   do {                                                                         \
     cudaError_t err = (expr);                                                  \
     if (err != cudaSuccess) {                                                  \
-      fprintf(stderr, "CUDA Error Code  : %d\n     Error String: %s\n", err,   \
+      fprintf(stderr,                                                          \
+              "CUDA Error Code  : %d\n     Error String: %s\n",                \
+              err,                                                             \
               cudaGetErrorString(err));                                        \
     }                                                                          \
   } while (0)
 
-#endif // _LAWRENCIUM_CUDA_HELPERS_H_
+#endif // _LAWRENCIUM_CCPG_HELPERS_H_

@@ -1,14 +1,27 @@
-#ifndef _LAWRENCIUM_SRC_CUDA_PING_H_
-#define _LAWRENCIUM_SRC_CUDA_PING_H_
+#ifndef _LAWRENCIUM_CUDA_LAYERS_H_
+#define _LAWRENCIUM_CUDA_LAYERS_H_
+
 namespace lawrencium {
 namespace cuda {
-__global__ void FclForwardPass(const float *inputs,
-                               const int input_dim,
-                               const float *biases,
-                               const float *weights,
-                               const int number_of_neurons,
-                               float *output);
-}
+
+struct Kernel {
+  int width;
+  int height;
+  int padding;
+  int stride;
+};
+
+struct Batch {
+  int batchSize;
+  int numChannels;
+  int width;
+  int height;
+  float *samples[]; // Batch size X numChannels X width X height.
+};
+
+void Convolve(const Batch input, Batch output, Kernel kernel);
+
+} // namespace cuda
 } // namespace lawrencium
 
 #endif
