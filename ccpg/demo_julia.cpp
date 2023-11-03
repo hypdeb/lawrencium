@@ -71,7 +71,7 @@ bool saveBitmapToFile(const std::vector<unsigned char> &pixelData,
 }
 
 int main() {
-  const int width = 4096;
+  const int width = 4096 * 2;
   const auto bitmap = lawrencium::ccpg::julia::DrawOnGpu(width);
   const auto checkSum = std::reduce(bitmap.cbegin(), bitmap.cend());
   std::cout << bitmap[10000] << '\n';

@@ -5,7 +5,6 @@ cc_test(
         "test_bookcamp.cc",
         "test_cuda.cc",
         "test_leetcode.cc",
-        "test_neural_nets.cc",
         "test_sanity.cc",
     ],
     deps = [
@@ -13,7 +12,6 @@ cc_test(
         "//common",
         "//cuda:ping",
         "//leetcode",
-        "//neural_nets",
         "@com_google_googletest//:gtest",
         "@com_google_googletest//:gtest_main",
     ],
